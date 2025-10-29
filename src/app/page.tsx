@@ -6,6 +6,7 @@ import { WeatherCard } from "@/components/WeatherCard";
 import { WeatherData } from "@/types/weather"; 
 import { CITIES as cities } from "@/data/cities";
 import { DUMMY_WEATHER_DATA } from "@/data/weather-data";
+import { ActionButton } from "@/components/ActionButton";
 
 const FAVORITE_CITY_NAMES = ["Houston", "Chicago", "Philadelphia"]; // Order matched to your screenshot
 const FAVORITE_CITIES = cities.filter(city => FAVORITE_CITY_NAMES.includes(city.name));
@@ -46,15 +47,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 3. Button to all cities page */}
-        <div className="text-center pt-8">
-          <Link href="/all-cities">
-            {/* MODIFICATION: Changed button color class to a bright yellow*/}
-            <button className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-md shadow-lg transition transform hover:scale-105 whitespace-nowrap">
-              show all saved cities
-            </button>
-          </Link>
-        </div>
+        {/* Button to all cities page */}
+          <div className="text-center pt-8">
+              {/* Use ActionButton for the home page */}
+                <ActionButton 
+                    text="show all saved cities" 
+                    href="/all-cities" 
+                />
+          </div>
       </main>
     </div>
   );

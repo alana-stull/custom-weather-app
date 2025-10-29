@@ -6,6 +6,7 @@ import { WeatherCard } from "@/components/WeatherCard";
 import { WeatherData } from "@/types/weather"; 
 import { CITIES as ALL_CITIES } from "@/data/cities";
 import { DUMMY_WEATHER_DATA } from "@/data/weather-data";
+import { ActionButton } from "@/components/ActionButton";
 
 export default function AllCitiesPage() {
   
@@ -23,16 +24,12 @@ export default function AllCitiesPage() {
           subtitle="a forecast from every destination you've explored."
         />
         
-        {/* Back Button */}
-        <div className="flex justify-center md:justify-start">
-            <Link href="/">
-                <Link href="/">
-                {/* Reusing the styling from the home page button */}
-                <button className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-md shadow-lg transition transform hover:scale-105 whitespace-nowrap">
-                    back to featured cities
-                </button>
-            </Link>
-            </Link>
+        {/* MODIFICATION: Use ActionButton for the back link */}
+          <div className="pt-2"> 
+            <ActionButton 
+              text="Back to Featured Cities" 
+              href="/" 
+            />
         </div>
 
         {/* MODIFICATION 2: Grid of ALL Cities */}
