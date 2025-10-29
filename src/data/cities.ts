@@ -6,6 +6,21 @@ export interface City {
 
 export const CITIES: City[] = [
   {
+    name: "Houston",
+    latitude: 29.7601,
+    longitude: 95.3701,
+  },
+  {
+    name: "Chicago",
+    latitude: 41.8832,
+    longitude: 87.6324,
+  },
+  {
+    name: "Philadelphia",
+    latitude: 39.9526,
+    longitude: 75.1652,
+  },
+  {
     name: "Durham",
     latitude: 35.9940,
     longitude: -78.8986,

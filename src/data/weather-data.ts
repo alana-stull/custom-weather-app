@@ -8,7 +8,139 @@ import { WeatherData } from "@/types/weather";
  * All temperatures in Fahrenheit, wind speed in mph
  */
 export const DUMMY_WEATHER_DATA: Record<string, WeatherData> = {
-  durham: {
+  Houston: {
+    city: "Houston",
+    latitude: 29.7601,
+    longitude: 95.3701,
+    current: {
+      temperature: 82,
+      feelsLike: 85,
+      humidity: 70,
+      windSpeed: 10,
+      condition: {
+        code: 61,
+        description: "Slight rain",
+      },
+    },
+    forecast: [
+      {
+        date: new Date(Date.now() + 86400000).toISOString().split("T")[0],
+        maxTemp: 85,
+        minTemp: 72,
+        condition: {
+          code: 63,
+          description: "Moderate rain",
+        },
+      },
+      {
+        date: new Date(Date.now() + 172800000).toISOString().split("T")[0],
+        maxTemp: 88,
+        minTemp: 74,
+        condition: {
+          code: 2,
+          description: "Partly cloudy",
+        },
+      },
+      {
+        date: new Date(Date.now() + 259200000).toISOString().split("T")[0],
+        maxTemp: 84,
+        minTemp: 71,
+        condition: {
+          code: 1,
+          description: "Mainly clear",
+        },
+      },
+    ],
+  },
+  Chicago: {
+    city: "Chicago",
+    latitude: 41.8832,
+    longitude: 87.6324,
+    current: {
+      temperature: 55,
+      feelsLike: 52,
+      humidity: 60,
+      windSpeed: 12,
+      condition: {
+        code: 3,
+        description: "Overcast",
+      },
+    },
+    forecast: [
+      {
+        date: new Date(Date.now() + 86400000).toISOString().split("T")[0],
+        maxTemp: 58,
+        minTemp: 50,
+        condition: {
+          code: 2,
+          description: "Partly cloudy",
+        },
+      },
+      {
+        date: new Date(Date.now() + 172800000).toISOString().split("T")[0],
+        maxTemp: 60,
+        minTemp: 52,
+        condition: {
+          code: 1,
+          description: "Mainly clear",
+        },
+      },
+      {
+        date: new Date(Date.now() + 259200000).toISOString().split("T")[0],
+        maxTemp: 57,
+        minTemp: 49,
+        condition: {
+          code: 61,
+          description: "Slight rain",
+        },
+      },
+    ],
+  },
+  Philadelphia: {
+    city: "Philadelphia",
+    latitude: 39.9526,
+    longitude: 75.1652,
+    current: {
+      temperature: 67,
+      feelsLike: 65,
+      humidity: 68,
+      windSpeed: 8,
+      condition: {
+        code: 2,
+        description: "Partly cloudy",
+      },
+    },
+    forecast: [
+      {
+        date: new Date(Date.now() + 86400000).toISOString().split("T")[0],
+        maxTemp: 70,
+        minTemp: 60,
+        condition: {
+          code: 1,
+          description: "Mainly clear",
+        },
+      },
+      {
+        date: new Date(Date.now() + 172800000).toISOString().split("T")[0],
+        maxTemp: 73,
+        minTemp: 62,
+        condition: {
+          code: 0,
+          description: "Clear sky",
+        },
+      },
+      {
+        date: new Date(Date.now() + 259200000).toISOString().split("T")[0],
+        maxTemp: 69,
+        minTemp: 61,
+        condition: {
+          code: 63,
+          description: "Moderate rain",
+        },
+      },
+    ],
+  },
+  Durham: {
     city: "Durham",
     latitude: 35.9940,
     longitude: -78.8986,
@@ -52,7 +184,7 @@ export const DUMMY_WEATHER_DATA: Record<string, WeatherData> = {
       },
     ],
   },
-  "new york": {
+  "New York": {
     city: "New York",
     latitude: 40.7128,
     longitude: -74.0060,
@@ -96,7 +228,7 @@ export const DUMMY_WEATHER_DATA: Record<string, WeatherData> = {
       },
     ],
   },
-  tokyo: {
+  Tokyo: {
     city: "Tokyo",
     latitude: 35.6762,
     longitude: 139.6503,

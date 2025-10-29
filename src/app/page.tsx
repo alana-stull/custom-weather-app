@@ -1,60 +1,60 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { LocationSearch } from "@/components/LocationSearch";
-import { LoadingState } from "@/components/LoadingState";
-import { ErrorMessage } from "@/components/ErrorMessage";
-import { WeatherDisplay } from "@/components/WeatherDisplay";
+import Link from "next/link";
 import { PageHeader } from "@/components/PageHeader";
-import { getWeatherData } from "@/lib/getWeather";
-import { WeatherData } from "@/types/weather";
+import { WeatherCard } from "@/components/WeatherCard"; 
+import { WeatherData } from "@/types/weather"; 
+import { CITIES as cities } from "@/data/cities";
+import { DUMMY_WEATHER_DATA } from "@/data/weather-data";
 
-// Default city to display on load
-const DEFAULT_CITY = "Durham";
+const FAVORITE_CITY_NAMES = ["Houston", "Chicago", "Philadelphia"]; // Order matched to your screenshot
+const FAVORITE_CITIES = cities.filter(city => FAVORITE_CITY_NAMES.includes(city.name));
 
 export default function Home() {
-  const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    // Load default city weather on mount
-    loadCityWeather(DEFAULT_CITY);
-  }, []);
-
-  const loadCityWeather = (cityName: string) => {
-    setLoading(true);
-    setError("");
-
-    const data = getWeatherData(cityName);
-
-    if (data) {
-      setWeather(data);
-    } else {
-      setError(`Failed to load weather data for ${cityName}`);
-    }
-
-    setLoading(false);
-  };
-
+  
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 dark:bg-zinc-950 px-4 py-12">
-      <main className="w-full max-w-2xl space-y-8">
-        {/* Header */}
+      <main className="w-full max-w-4xl space-y-12">
+        
+        {/* Header remains the same */}
         <PageHeader
-          title="Weather App"
-          subtitle="Simple weather forecast for your city"
+          title="hello sunshine! ☀️"
+          subtitle="bringing a little light to your forecast."
         />
+        
+        {/* 2. Cities You've Traveled To Section */}
+        <section className="pt-4"> 
+          {/* MODIFICATION: Updated heading text */}
+          <h2 className="text-2xl font-semibold mb-6 text-center">cities you've traveled to:</h2> 
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"> 
+            {FAVORITE_CITIES.map((city) => {
+              const fullWeatherData = DUMMY_WEATHER_DATA[city.name] as WeatherData | undefined;
+              
+              if (!fullWeatherData) return null; 
 
-        {/* Search at the top */}
-        <div className="flex flex-col items-center">
-          <LocationSearch onCitySelect={loadCityWeather} />
+              const currentWeather = fullWeatherData.current;
+
+              return (
+                <WeatherCard
+                  key={city.name}
+                  city={city.name}
+                  weather={currentWeather} 
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        {/* 3. Button to all cities page */}
+        <div className="text-center pt-8">
+          <Link href="/all-cities">
+            {/* MODIFICATION: Changed button color class to a bright yellow*/}
+            <button className="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-md shadow-lg transition transform hover:scale-105 whitespace-nowrap">
+              show all saved cities
+            </button>
+          </Link>
         </div>
-
-        {/* Weather display */}
-        {loading && <LoadingState />}
-        {error && <ErrorMessage message={error} />}
-        {weather && !loading && <WeatherDisplay weather={weather} />}
       </main>
     </div>
   );
