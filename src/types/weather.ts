@@ -15,6 +15,7 @@ export interface CurrentWeather {
   feelsLike: number; // in Fahrenheit
   humidity: number; // percentage
   windSpeed: number; // in mph
+  uvIndex: number;
   condition: WeatherCondition;
 }
 
